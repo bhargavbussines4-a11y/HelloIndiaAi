@@ -10,7 +10,7 @@
   box-sizing:border-box;
   margin:0;
   padding:0;
-  font-family:Arial, sans-serif;
+  font-family:Arial,sans-serif;
 }
 
 body{
@@ -46,7 +46,8 @@ header{
   font-weight:bold;
 }
 
-.logo span{
+.logo span,
+.welcome h1 span{
   color:#ff7a00;
 }
 
@@ -61,6 +62,7 @@ header{
   color:white;
   padding:8px 11px;
   border-radius:9px;
+  cursor:pointer;
 }
 
 main{
@@ -80,10 +82,6 @@ main{
 .welcome h1{
   font-size:34px;
   margin-bottom:10px;
-}
-
-.welcome h1 span{
-  color:#ff7a00;
 }
 
 .welcome p{
@@ -124,11 +122,11 @@ main{
   background:#252c35;
   color:white;
   font-size:19px;
+  cursor:pointer;
 }
 
 .send{
   background:#ff7a00;
-  color:white;
 }
 
 .hint{
@@ -168,6 +166,7 @@ main{
   color:white;
   font-weight:bold;
   margin-bottom:25px;
+  cursor:pointer;
 }
 
 .history{
@@ -177,6 +176,7 @@ main{
 .history div{
   padding:12px 5px;
   border-bottom:1px solid #252b33;
+  word-break:break-word;
 }
 
 .close{
@@ -184,6 +184,7 @@ main{
   right:18px;
   top:18px;
   font-size:22px;
+  cursor:pointer;
 }
 
 .overlay{
@@ -199,6 +200,7 @@ main{
 }
 
 @media(max-width:500px){
+
   .welcome h1{
     font-size:28px;
   }
@@ -218,45 +220,74 @@ main{
 <body>
 
 <div class="sidebar" id="sidebar">
+
   <div class="close" onclick="closeMenu()">✕</div>
 
   <h2>☰ History</h2>
 
-  <button class="newchat" onclick="newChat()">＋ New Chat</button>
+  <button class="newchat" onclick="newChat()">
+    ＋ New Chat
+  </button>
 
   <div class="history" id="history">
     <div>No history yet</div>
   </div>
+
 </div>
 
 <div class="overlay" id="overlay" onclick="closeMenu()"></div>
 
 <header>
+
   <div class="left">
-    <div class="menu" onclick="openMenu()">☰</div>
+
+    <div class="menu" onclick="openMenu()">
+      ☰
+    </div>
 
     <div class="logo">
       Hello <span>India</span> AI
     </div>
+
   </div>
 
   <div class="auth">
-    <button onclick="login()">Login</button>
-    <button onclick="signup()">Signup</button>
+
+    <button onclick="login()">
+      Login
+    </button>
+
+    <button onclick="signup()">
+      Signup
+    </button>
+
   </div>
+
 </header>
 
 <main>
 
   <div class="welcome">
-    <h1>Welcome to <span>Hello India AI</span> 🇮🇳</h1>
-    <p>Ask anything. Search anything. Talk with AI.</p>
+
+    <h1>
+      Welcome to <span>Hello India AI</span> 🇮🇳
+    </h1>
+
+    <p>
+      Ask anything. Search anything. Talk with AI.
+    </p>
+
   </div>
 
   <div class="chatbox">
 
     <div class="input-area">
-      <button class="icon-btn" onclick="startVoice()">🎤</button>
+
+      <button
+        class="icon-btn"
+        onclick="startVoice()">
+        🎤
+      </button>
 
       <input
         id="message"
@@ -265,7 +296,12 @@ main{
         onkeydown="enterSend(event)"
       >
 
-      <button class="icon-btn send" onclick="sendMessage()">➤</button>
+      <button
+        class="icon-btn send"
+        onclick="sendMessage()">
+        ➤
+      </button>
+
     </div>
 
     <div class="hint">
@@ -279,76 +315,128 @@ main{
 <script>
 
 function openMenu(){
-  document.getElementById("sidebar").classList.add("active");
-  document.getElementById("overlay").classList.add("active");
+
+  document
+    .getElementById("sidebar")
+    .classList.add("active");
+
+  document
+    .getElementById("overlay")
+    .classList.add("active");
 }
 
+
 function closeMenu(){
-  document.getElementById("sidebar").classList.remove("active");
-  document.getElementById("overlay").classList.remove("active");
+
+  document
+    .getElementById("sidebar")
+    .classList.remove("active");
+
+  document
+    .getElementById("overlay")
+    .classList.remove("active");
 }
+
 
 function sendMessage(){
 
-  const input=document.getElementById("message");
-  const text=input.value.trim();
+  const input =
+    document.getElementById("message");
 
-  if(text==="") return;
+  const text =
+    input.value.trim();
 
-  let history=document.getElementById("history");
-
-  if(history.innerText==="No history yet"){
-    history.innerHTML="";
+  if(text === ""){
+    return;
   }
 
-  let item=document.createElement("div");
-  item.innerText=text;
+  let history =
+    document.getElementById("history");
+
+  if(history.innerText === "No history yet"){
+    history.innerHTML = "";
+  }
+
+  let item =
+    document.createElement("div");
+
+  item.innerText = text;
+
   history.prepend(item);
 
-  input.value="";
+  input.value = "";
 
-  alert("AI connection will be added in the next step.");
+  alert(
+    "Hello India AI ka AI system next step mein connect hoga."
+  );
 }
+
 
 function enterSend(event){
-  if(event.key==="Enter"){
+
+  if(event.key === "Enter"){
     sendMessage();
   }
+
 }
+
 
 function newChat(){
-  document.getElementById("message").value="";
+
+  document.getElementById("message").value = "";
+
   closeMenu();
+
 }
+
 
 function login(){
-  alert("Login system will be added next.");
+
+  alert(
+    "Login system next step mein banega."
+  );
+
 }
 
+
 function signup(){
-  alert("Signup system will be added next.");
+
+  alert(
+    "Signup system next step mein banega."
+  );
+
 }
+
 
 function startVoice(){
 
   if(!("webkitSpeechRecognition" in window)){
-    alert("Voice input is not supported in this browser.");
+
+    alert(
+      "Voice input is not supported in this browser."
+    );
+
     return;
   }
 
-  const recognition=new webkitSpeechRecognition();
+  const recognition =
+    new webkitSpeechRecognition();
 
-  recognition.lang="hi-IN";
+  recognition.lang = "hi-IN";
 
-  recognition.onresult=function(event){
-    document.getElementById("message").value=
-      event.results[0][0].transcript;
-  };
+  recognition.onresult =
+    function(event){
+
+      document.getElementById("message").value =
+        event.results[0][0].transcript;
+
+    };
 
   recognition.start();
+
 }
 
 </script>
 
 </body>
-  </html>
+</html>
